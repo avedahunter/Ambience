@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="group4asu.ambience.elementActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/rule_text"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <Spinner
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tempSpinner"
+        android:layout_gravity="right"
+        android:spinnerMode="dropdown"
+        android:layout_marginTop="79dp"
+        android:layout_below="@+id/rule_text"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/operatorSpinner"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/tempSpinner"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/blindSpinner"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/lightSpinner"
+        android:layout_alignParentStart="true" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lightSpinner"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/operatorSpinner"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/button_delete"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:id="@+id/button_update"
+        android:layout_alignTop="@+id/button_delete"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

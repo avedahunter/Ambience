@@ -1,0 +1,55 @@
+/*
+	Calculates the blindPosition based on the 'ambientLight' and 'ambientTemp' in the room
+*/
+
+FUNCTION_BLOCK LightTemp	// Block definition (there may be more than one block per file)
+
+VAR_INPUT				// Define input variables
+	ambientLight : REAL;
+	ambientTemp : REAL;
+END_VAR
+
+VAR_OUTPUT				// Define output variable
+	blindPosition : REAL;
+END_VAR
+
+FUZZIFY ambientLight			// Fuzzify input variable 'ambientLight': {'dark', 'dim' , 'bright'}
+	TERM dark := (0,1) (25,1) (35,0);
+	TERM dim := (25,0) (50,1) (75,0);
+	TERM bright := (65,0) (75,1) (100,1);
+END_FUZZIFY
+
+FUZZIFY ambientTemp			// Fuzzify input variable 'ambientTemp': {'freezing', 'cold', 'comfort', 'warm', 'hot'}
+	TERM freezing := (0,1) (25,0);
+	TERM cold := (0,0) (25,1) (50,0);
+	TERM comfort := (25,0) (50,1) (75,0);
+	TERM warm := (50,0) (75,1) (100,0);
+	TERM hot := (75,0) (100,1);
+END_FUZZIFY
+
+DEFUZZIFY blindPosition			// Defzzzify output variable 'tip' : {'open', 'half', 'close' }
+	TERM open := (0,1) (25,1) (50,0);
+	TERM half := (25,0) (50,1) (75,0); 
+	TERM close := (50,0)(75,1) (100,1);
+
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+
+
+
+RULEBLOCK No1
+	AND : MIN;			// Use 'min' for 'and' (also implicit use 'max' for 'or' to fulfill DeMorgan's Law)
+	ACT : MIN;			// Use 'min' activation method
+	ACCU : MAX;			// Use 'max' accumulation method
+
+	RULE 1 : IF ambientTemp IS hot AND ambientLight IS dim THEN blindPosition IS close;
+	RULE 2 : IF ambientTemp IS cold AND ambientLight IS bright THEN blindPosition IS half;
+	RULE 3 : IF ambientTemp IS warm AND ambientLight IS dim THEN blindPosition IS half;
+	RULE 4 : IF ambientTemp IS warm AND ambientLight IS bright THEN blindPosition IS close;
+	RULE 5 : IF ambientLight IS dark THEN blindPosition IS open;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
+

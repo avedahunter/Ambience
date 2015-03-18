@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ambience</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="temp"></string>
+    <string name="intensity"></string>
+    <string name="dialog_fire_missiles">Fire Dialog?</string>
+    <string name="fire">FIRE</string>
+    <string name="cancel">Cancel</string>
+    <string name="ip">Please enter the ip of the pi.</string>
+    <string name="title_activity_rule_base">RuleBase</string>
+
+    <string-array name="tempList">
+        <item>freezing</item>
+        <item>cold</item>
+        <item>comfort</item>
+        <item>warm</item>
+        <item>hot</item>
+        <item>any</item>
+    </string-array>
+
+    <string-array name="intensityList">
+        <item>dark</item>
+        <item>dim</item>
+        <item>bright</item>
+        <item>any</item>
+    </string-array>
+
+    <string-array name="blindPosList">
+        <item>close</item>
+        <item>open</item>
+        <item>half</item>
+    </string-array>
+
+    <string-array name="operAndOrList">
+        <item>AND</item>
+        <item>OR</item>
+    </string-array>
+    <string name="title_activity_element">elementActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_zip">zip</string>
+
+</resources>
